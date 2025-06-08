@@ -40,7 +40,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import api from '../axios'
-import { useAuthStore } from '@/stores/authStore'
+import { useAuthStore } from '../stores/authStore'
 
 const authStore = useAuthStore()
 const users = ref([])
