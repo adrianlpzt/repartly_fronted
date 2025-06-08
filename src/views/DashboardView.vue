@@ -5,7 +5,7 @@ import PlanStatusBanner from '../components/common/PlanStatusBanner.vue'
 import { useDeliveryStore } from '../stores/deliveryStore'
 import { useCollectionStore } from '../stores/collectionStore'
 import { useExpensesStore } from '../stores/expensesStore'
-import InformesDiarios from '../components/dashboard/InformesDiarios.vue'
+import InformesDiarios from '../components/dashboard/informesDiarios.vue'
 import InformesMensuales from '../components/dashboard/InformesMensuales.vue'
 
 const deliveryStore = useDeliveryStore()
