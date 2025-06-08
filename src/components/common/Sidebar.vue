@@ -74,7 +74,7 @@ const showAdminLink = computed(() => {
         <li class="text-gray-300">Configuración</li>
         <li><RouterLink to="/perfil" class="nav-link" @click="$emit('close')"><User class="w-5 h-5 text-gray-600"/>Perfil</RouterLink></li>
         <li><RouterLink to="/configuracion" class="nav-link" @click="$emit('close')"><Cog class="w-5 h-5 text-gray-600"/>Configuración</RouterLink></li>
-        <li class="text-gray-300"></li>
+        <li class="text-gray-300">Administración</li>
         <li v-if="showAdminLink">
           <RouterLink to="/admin/usuarios" class="nav-link" @click="$emit('close')">
             <User class="w-5 h-5 text-gray-600"/> Panel de Usuarios
@@ -83,7 +83,7 @@ const showAdminLink = computed(() => {
         <li>
           <button
             @click="logout"
-            class="flex items-center gap-3 w-full text-left px-3 py-2 rounded-md text-gray-700 hover:bg-red-50 hover:text-red-600 transition"
+            class="border-t flex items-center gap-3 w-full text-left px-3 py-2 rounded-md text-gray-700 hover:bg-red-50 hover:text-red-600 transition"
           >
             <X class="w-5 h-5" />
             Cerrar sesión
