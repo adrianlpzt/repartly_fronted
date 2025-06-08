@@ -35,3 +35,4 @@ jobs:
         source: "dist/**"
         target: "domains/repartly.app/public_html"
         rm: true
+        strip_components: 1
