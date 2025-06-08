@@ -32,6 +32,6 @@ jobs:
         username: u960928938
         key: ${{ secrets.HOSTINGER_SSH_KEY }}
         port: 65002
-        source: "dist/*"
+        source: "dist/**"
         target: "public_html"
         rm: true
