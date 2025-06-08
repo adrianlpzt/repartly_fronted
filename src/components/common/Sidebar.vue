@@ -24,7 +24,7 @@ const logout = () => {
 }
 
 const showAdminLink = computed(() => {
-  return userStore.user?.username === 'adrianlpzt' || userStore.profile?.is_admin_panel
+  return userStore.profile?.is_admin_panel
 })
 
 </script>
