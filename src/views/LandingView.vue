@@ -22,7 +22,7 @@
             to="/register"
             class="bg-black text-white font-semibold px-6 py-3 rounded-xl shadow hover:scale-105 transition duration-300"
           >
-            Registro
+            Solicitar acceso
           </RouterLink>
         </div>
       </div>
