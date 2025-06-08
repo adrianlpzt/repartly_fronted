@@ -31,6 +31,6 @@ jobs:
         host: repartly.app
         username: u960928938
         key: ${{ secrets.HOSTINGER_SSH_KEY }}
-        port: 22
+        port: 65002
         source: "dist/*"
         target: "public_html"
