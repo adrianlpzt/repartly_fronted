@@ -6,7 +6,7 @@ import ExpensesView from '../views/ExpensesView.vue'
 import PlatformsView from '../views/PlatformsView.vue'
 import ProfileView from '../views/ProfileView.vue'
 import Login from '../views/loginView.vue'
-import ConfigView from '../views/configView.vue'
+import ConfigView from '../views/ConfigView.vue'
 import LandingView from '../views/LandingView.vue'
 import RegisterView from '../views/RegisterView.vue'
 
