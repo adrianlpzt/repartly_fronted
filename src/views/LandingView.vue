@@ -9,7 +9,7 @@
           Claridad financiera para repartidores
         </h1>
         <p class="max-w-xl text-lg text-gray-700 mt-4 mb-8 animate-fade-in-up text-center">
-          CControla entregas, gastos, ganancias y facturación desde un panel intuitivo y accesible desde cualquier dispositivo.
+          Controla entregas, gastos, ganancias y facturación desde un panel intuitivo y accesible desde cualquier dispositivo.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up">
           <RouterLink
