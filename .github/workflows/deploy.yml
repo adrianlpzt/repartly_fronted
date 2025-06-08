@@ -33,5 +33,5 @@ jobs:
         key: ${{ secrets.HOSTINGER_SSH_KEY }}
         port: 65002
         source: "dist/**"
-        target: "public_html"
+        target: "domains/repartly.app/public_html"
         rm: true
