@@ -1,0 +1,36 @@
+name: Deploy Frontend to Hostinger
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Build and Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v3
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Build project
+      run: npm run build
+
+    - name: Deploy to Hostinger via SSH
+      uses: appleboy/scp-action@v0.1.4
+      with:
+        host: repartly.app
+        username: u960928938
+        key: ${{ secrets.HOSTINGER_SSH_KEY }}
+        port: 22
+        source: "dist/*"
+        target: "public_html"

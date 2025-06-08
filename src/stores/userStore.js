@@ -54,9 +54,18 @@ export const useUserStore = defineStore('user', {
     async updateProfile(datos) {
       try {
         const token = localStorage.getItem('accessToken')
+
+        // Mezcla los datos actuales del perfil con los nuevos
+        const datosCompletos = {
+          telefono: datos.telefono ?? this.profile.telefono,
+          nif: datos.nif ?? this.profile.nif,
+          avatar: datos.avatar ?? this.profile.avatar,
+          fecha_nacimiento: datos.fecha_nacimiento ?? this.profile.fecha_nacimiento
+        }
+
         const response = await api.put(
           `/perfil/${this.profile.id}/`,
-          datos,
+          datosCompletos,
           {
             headers: {
               Authorization: `Bearer ${token}`
@@ -64,7 +73,6 @@ export const useUserStore = defineStore('user', {
           }
         )
 
-        // Actualiza el store con la nueva info
         this.profile = response.data
         return response.data
       } catch (error) {
@@ -72,6 +80,7 @@ export const useUserStore = defineStore('user', {
         throw error
       }
     },
+
     async updateUser(datosUsuario) {
       try {
         const token = localStorage.getItem('accessToken')

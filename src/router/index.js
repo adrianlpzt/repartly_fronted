@@ -7,19 +7,22 @@ import PlatformsView from '../views/PlatformsView.vue'
 import ProfileView from '../views/ProfileView.vue'
 import Login from '../views/loginView.vue'
 import ConfigView from '../views/configView.vue'
-
+import LandingView from '../views/LandingView.vue'
+import RegisterView from '../views/RegisterView.vue'
 
 const routes = [
-  { path: '/', redirect: '/dashboard' },
+  { path: '/', name: 'Landing', component: LandingView },
+  { path: '/register', name: 'Reister', component: RegisterView },
   { path: '/login', name: 'Login', component: Login },
-  { path: '/dashboard', component: DashboardView, meta: { requiereAuth: true }, },
-  { path: '/entregas', component: DeliveriesView, meta: { requiereAuth: true }, },
-  { path: '/recogidas', component: CollectionsView, meta: { requiereAuth: true }, },
-  { path: '/gastos', component: ExpensesView, meta: { requiereAuth: true }, },
-  { path: '/plataformas', component: PlatformsView, meta: { requiereAuth: true }, },
-  { path: '/perfil', component: ProfileView, meta: { requiereAuth: true }, },
-  { path: '/configuracion', component: ConfigView, meta: { requiereAuth: true }, },
+  { path: '/dashboard', component: DashboardView, meta: { requiereAuth: true } },
+  { path: '/entregas', component: DeliveriesView, meta: { requiereAuth: true } },
+  { path: '/recogidas', component: CollectionsView, meta: { requiereAuth: true } },
+  { path: '/gastos', component: ExpensesView, meta: { requiereAuth: true } },
+  { path: '/plataformas', component: PlatformsView, meta: { requiereAuth: true } },
+  { path: '/perfil', component: ProfileView, meta: { requiereAuth: true } },
+  { path: '/configuracion', component: ConfigView, meta: { requiereAuth: true } },
 ]
+
 
 
 const router = createRouter({
