@@ -9,6 +9,8 @@ import Login from '../views/loginView.vue'
 import ConfigView from '../views/ConfigView.vue'
 import LandingView from '../views/LandingView.vue'
 import RegisterView from '../views/RegisterView.vue'
+import AdminUsersView from '../views/AdminUsersView.vue'
+
 
 const routes = [
   { path: '/', name: 'Landing', component: LandingView },
@@ -21,6 +23,8 @@ const routes = [
   { path: '/plataformas', component: PlatformsView, meta: { requiereAuth: true } },
   { path: '/perfil', component: ProfileView, meta: { requiereAuth: true } },
   { path: '/configuracion', component: ConfigView, meta: { requiereAuth: true } },
+  { path: '/admin/usuarios', component: AdminUsersView, meta: { requiereAuth: true } },
+
 ]
 
 

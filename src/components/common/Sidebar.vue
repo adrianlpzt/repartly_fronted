@@ -2,7 +2,7 @@
 import {Cog, User, Network, HandCoins, Download, PackageCheck, LayoutDashboard , Menu, X } from 'lucide-vue-next'
 import { useRouter } from 'vue-router'
 import { useUserStore } from '../../stores/userStore'
-import { onMounted } from 'vue'
+import { onMounted, computed } from 'vue'
 
 const userStore = useUserStore()
 
@@ -22,6 +22,10 @@ const logout = () => {
   localStorage.removeItem('refreshToken')
   router.push('/login')
 }
+
+const showAdminLink = computed(() => {
+  return userStore.user?.username === 'adrianlpzt' || userStore.profile?.is_admin_panel
+})
 
 </script>
 
@@ -70,7 +74,12 @@ const logout = () => {
         <li class="text-gray-300">Configuración</li>
         <li><RouterLink to="/perfil" class="nav-link" @click="$emit('close')"><User class="w-5 h-5 text-gray-600"/>Perfil</RouterLink></li>
         <li><RouterLink to="/configuracion" class="nav-link" @click="$emit('close')"><Cog class="w-5 h-5 text-gray-600"/>Configuración</RouterLink></li>
-        <li class="text-gray-300"></li>    
+        <li class="text-gray-300"></li>
+        <li v-if="showAdminLink">
+          <RouterLink to="/admin/usuarios" class="nav-link" @click="$emit('close')">
+            <User class="w-5 h-5 text-gray-600"/> Panel de Usuarios
+          </RouterLink>
+        </li>    
         <li>
           <button
             @click="logout"
