@@ -20,6 +20,9 @@ const avatarImages = {
   "avatar6.png": new URL('@/assets/avatars/avatar6.png', import.meta.url).href,
 }
 
+const getAvatarPath = (avatar) =>
+  new URL(`../assets/avatars/${avatar}`, import.meta.url).href
+
 onMounted(async () => {
   try {
     await userStore.fetchUserData()
@@ -49,7 +52,7 @@ onMounted(async () => {
     <div v-else-if="userStore.profile && userStore.user" class="bg-white rounded-2xl shadow-md border border-gray-100 p-6">
       <div class="flex items-center gap-4">
         <img
-          :src="avatarImages[userStore.profile.avatar] || avatarImages['avatar1.png']"
+          :src="getAvatarPath(userStore.profile.avatar)"
           alt="Avatar"
           class="w-16 h-16 rounded-full border border-emerald-300 object-cover"
         />
