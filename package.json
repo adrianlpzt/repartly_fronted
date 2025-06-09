@@ -4,7 +4,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build --mode production",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "postbuild": "cp public/.htaccess dist/.htaccess"
   },
   "dependencies": {
     "apexcharts": "^4.7.0",
