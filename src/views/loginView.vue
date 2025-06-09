@@ -1,6 +1,6 @@
 <template>
   <div class="min-h-screen bg-gradient-to-br from-blue-100 to-white flex items-center justify-center py-10 px-4">
-    <div class="bg-white p-8 rounded-2xl shadow-2xl w-full max-w-md animate-fade-in">
+    <div class="bg-white p-8 rounded-2xl shadow-2xl w-full max-w-md">
       <img src="../assets/img/repartly_sin_fondo.png" alt="Repartly logo" class="mb-6 mx-auto w-32 md:w-40" />
       <h1 class="text-xl font-bold text-center text-blue-800 mb-6">Bienvenido de nuevo</h1>
       <form @submit.prevent="login" class="space-y-5">

@@ -1,32 +1,50 @@
 <template>
   <div>
-<!-- HERO PRINCIPAL -->
-    <section class="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-100 text-blue-800 flex flex-col items-center justify-center text-center px-4 relative overflow-hidden">
-      <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-white via-blue-100 to-white opacity-20 animate-fade-in"></div>
-      <div class="z-10 flex flex-col items-center">
-        <img src="../assets/img/repartly_sin_fondo.png" alt="Logo repartly" class="mx-auto max-w-xs md:max-w-sm mb-6 animate-fade-in" />
-        <h1 class="text-3xl md:text-5xl font-extrabold animate-fade-in text-center">
-          Claridad financiera para repartidores
-        </h1>
-        <p class="max-w-xl text-lg text-gray-700 mt-4 mb-8 animate-fade-in-up text-center">
-          Controla entregas, gastos, ganancias y facturación desde un panel intuitivo y accesible desde cualquier dispositivo.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up">
-          <RouterLink
-            to="/login"
-            class="bg-blue-700 text-white font-semibold px-6 py-3 rounded-xl shadow hover:scale-105 transition duration-300"
-          >
-            Iniciar sesión
-          </RouterLink>
-          <RouterLink
-            to="/register"
-            class="bg-black text-white font-semibold px-6 py-3 rounded-xl shadow hover:scale-105 transition duration-300"
-          >
-            Solicitar acceso
-          </RouterLink>
-        </div>
-      </div>
-    </section>
+<!-- HERO PRINCIPAL CON VIDEOS DE FONDO -->
+<section class="min-h-screen relative flex flex-col items-center justify-center text-center px-4 overflow-hidden text-blue-800">
+
+  <!-- VIDEO de fondo -->
+  <video
+    :src="currentVideo"
+    autoplay
+    muted
+    loop
+    playsinline
+    @ended="nextVideo"
+    class="absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-1000"
+    :class="{ 'opacity-0': videoTransitioning, 'opacity-100': !videoTransitioning }"
+  ></video>
+
+  <!-- Overlay suave (opcional) -->
+  <div class="absolute inset-0 bg-white/60 z-10"></div>
+
+
+  <!-- CONTENIDO -->
+  <div class="relative z-20 flex flex-col items-center">
+    <img src="../assets/img/repartly_sin_fondo.png" alt="Logo repartly" class="mx-auto max-w-xs md:max-w-sm mb-6 animate-fade-in" />
+    <h1 class="text-3xl md:text-5xl font-extrabold animate-fade-in text-center">
+      Claridad financiera para repartidores
+    </h1>
+    <p class="max-w-xl text-lg text-gray-700 mt-4 mb-8 animate-fade-in-up text-center">
+      Controla entregas, gastos, ganancias y facturación desde un panel intuitivo y accesible desde cualquier dispositivo.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up">
+      <RouterLink
+        to="/login"
+        class="bg-blue-700 text-white font-semibold px-6 py-3 rounded-xl shadow hover:scale-105 transition duration-300"
+      >
+        Iniciar sesión
+      </RouterLink>
+      <RouterLink
+        to="/register"
+        class="bg-black text-white font-semibold px-6 py-3 rounded-xl shadow hover:scale-105 transition duration-300"
+      >
+        Solicitar acceso
+      </RouterLink>
+    </div>
+  </div>
+
+</section>
 
 
     <!-- QUÉ HACE REPARTLY -->
@@ -63,6 +81,59 @@
         </div>
       </div>
     </section>
+
+    <!-- REPARTLY TEAMS (PRÓXIMAMENTE) -->
+    <section class="py-28 px-8 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 text-white text-center overflow-hidden scroll-fade">
+      <div class="max-w-5xl mx-auto relative z-10">
+        <p class="inline-block mb-4 px-4 py-1 bg-blue-600 text-xs uppercase tracking-wider rounded-full shadow-lg">
+          Próximamente
+        </p>
+        <h2 class="text-4xl font-extrabold mb-6 leading-tight">Repartly Teams</h2>
+        <p class="max-w-3xl mx-auto text-lg text-blue-100 mb-10">
+          Da el salto a la gestión profesional de equipos de repartidores. Supervisa el rendimiento de tu equipo, controla entregas y gastos en tiempo real y automatiza reportes.
+        </p>
+
+        <div class="grid md:grid-cols-3 gap-8 text-left text-blue-100">
+          <div class="bg-blue-600/20 backdrop-blur p-6 rounded-xl border border-blue-500 shadow hover:scale-[1.02] transition">
+            <h3 class="text-xl font-bold mb-2">📊 Dashboard de equipo</h3>
+            <p>Estadísticas agregadas y detalladas por repartidor. Toda la actividad de tu equipo a un clic.</p>
+          </div>
+          <div class="bg-blue-600/20 backdrop-blur p-6 rounded-xl border border-blue-500 shadow hover:scale-[1.02] transition">
+            <h3 class="text-xl font-bold mb-2">🔐 Control de miembros</h3>
+            <p>Gestiona permisos y accesos. Añade o elimina repartidores de tu equipo fácilmente.</p>
+          </div>
+          <div class="bg-blue-600/20 backdrop-blur p-6 rounded-xl border border-blue-500 shadow hover:scale-[1.02] transition">
+            <h3 class="text-xl font-bold mb-2">📅 Reportes automáticos</h3>
+            <p>Reportes semanales o mensuales enviados automáticamente al administrador del equipo.</p>
+          </div>
+        </div>
+
+        <div class="mt-12 max-w-md mx-auto animate-fade-in-up delay-500">
+          <p class="mb-4 text-blue-100 text-lg">¿Quieres ser de los primeros en probar Repartly Teams? Déjanos tu correo y te avisaremos:</p>
+          <form @submit.prevent="submitBetaForm" class="flex flex-col sm:flex-row gap-4">
+            <input
+              v-model="betaEmail"
+              type="email"
+              required
+              placeholder="Tu correo electrónico"
+              class="flex-1 px-4 py-3 rounded-full text-blue-800 bg-white placeholder-blue-400 shadow focus:outline-none focus:ring focus:ring-blue-300 transition"
+            />
+            <button
+              type="submit"
+              class="px-8 py-3 bg-white text-blue-800 font-semibold rounded-full shadow-lg hover:scale-105 transition"
+            >
+              Enviar
+            </button>
+          </form>
+          <p v-if="betaSuccess" class="mt-4 text-green-300">¡Gracias! Te avisaremos cuando Repartly Teams esté disponible </p>
+        </div>
+
+      </div>
+
+      <!-- Fondo decorativo (opcional, puedes poner una imagen de mockup en el futuro) -->
+      <div class="absolute inset-0 bg-gradient-to-tr from-blue-900/80 to-blue-700/80 opacity-30 z-0"></div>
+    </section>
+
 
     <!-- SIMULACIÓN DE DASHBOARD -->
   <section class="bg-white py-20 text-center">
@@ -146,6 +217,18 @@ function animateNumber(el, end, isCurrency = false) {
   requestAnimationFrame(step)
 }
 
+const betaEmail = ref('')
+const betaSuccess = ref(false)
+
+const submitBetaForm = () => {
+  console.log('Email para Teams:', betaEmail.value)
+  // Aquí puedes añadir tu lógica para enviar el email a tu backend, a un Google Sheet, a un servicio de mailing, etc.
+
+  // Simulación de éxito:
+  betaSuccess.value = true
+  betaEmail.value = ''
+}
+
 onMounted(() => {
   // Animaciones scroll
   const observer = new IntersectionObserver((entries) => {
@@ -170,7 +253,38 @@ onMounted(() => {
     el.classList.add('opacity-0', 'translate-y-6', 'transition-all', 'duration-700')
     observer.observe(el)
   })
+
+  currentVideo.value = videos[Math.floor(Math.random() * videos.length)]
 })
+
+// SCRIPT VIDEOS LANDING
+
+// Lista de vídeos
+const videos = [
+  new URL('../assets/videos/video1.mp4', import.meta.url).href,
+  new URL('../assets/videos/video2.mp4', import.meta.url).href,
+  new URL('../assets/videos/video3.mp4', import.meta.url).href
+]
+
+// Estado
+const currentVideo = ref(videos[0])
+const videoTransitioning = ref(false)
+
+// Función para cambiar de vídeo aleatorio
+const nextVideo = () => {
+  videoTransitioning.value = true
+
+  setTimeout(() => {
+    const otherVideos = videos.filter(v => v !== currentVideo.value)
+    const randomVideo = otherVideos[Math.floor(Math.random() * otherVideos.length)]
+    currentVideo.value = randomVideo
+
+    // Termina la transición
+    videoTransitioning.value = false
+  }, 1000) // Tiempo del fade-out (coincide con transition duration)
+}
+
+
 </script>
 
 <style>
