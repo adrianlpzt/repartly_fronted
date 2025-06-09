@@ -33,14 +33,14 @@ if (open && userStore.user && userStore.profile) {
 
 
 
-const avatars = [
-  'avatar1.png',
-  'avatar2.png',
-  'avatar3.png',
-  'avatar4.png',
-  'avatar5.png',
-  'avatar6.png'
-]
+const avatarImages = {
+  "avatar1.png": new URL('@/assets/avatars/avatar1.png', import.meta.url).href,
+  "avatar2.png": new URL('@/assets/avatars/avatar2.png', import.meta.url).href,
+  "avatar3.png": new URL('@/assets/avatars/avatar3.png', import.meta.url).href,
+  "avatar4.png": new URL('@/assets/avatars/avatar4.png', import.meta.url).href,
+  "avatar5.png": new URL('@/assets/avatars/avatar5.png', import.meta.url).href,
+  "avatar6.png": new URL('@/assets/avatars/avatar6.png', import.meta.url).href,
+}
 
 // Rellenar datos cuando se abre el modal
 watch(() => props.isOpen, (open) => {

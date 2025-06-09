@@ -11,6 +11,15 @@ const userStore = useUserStore()
 const isEditing = ref(false)
 const isReady = ref(false)
 
+const avatarImages = {
+  "avatar1.png": new URL('@/assets/avatars/avatar1.png', import.meta.url).href,
+  "avatar2.png": new URL('@/assets/avatars/avatar2.png', import.meta.url).href,
+  "avatar3.png": new URL('@/assets/avatars/avatar3.png', import.meta.url).href,
+  "avatar4.png": new URL('@/assets/avatars/avatar4.png', import.meta.url).href,
+  "avatar5.png": new URL('@/assets/avatars/avatar5.png', import.meta.url).href,
+  "avatar6.png": new URL('@/assets/avatars/avatar6.png', import.meta.url).href,
+}
+
 onMounted(async () => {
   try {
     await userStore.fetchUserData()
@@ -40,7 +49,7 @@ onMounted(async () => {
     <div v-else-if="userStore.profile && userStore.user" class="bg-white rounded-2xl shadow-md border border-gray-100 p-6">
       <div class="flex items-center gap-4">
         <img
-          :src="'/src/assets/avatars/' + userStore.profile.avatar"
+          :src="avatarImages[userStore.profile.avatar] || avatarImages['avatar1.png']"
           alt="Avatar"
           class="w-16 h-16 rounded-full border border-emerald-300 object-cover"
         />
