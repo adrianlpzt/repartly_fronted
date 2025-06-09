@@ -1,50 +1,56 @@
 <template>
   <div>
-<!-- HERO PRINCIPAL CON VIDEOS DE FONDO -->
-<section class="min-h-screen relative flex flex-col items-center justify-center text-center px-4 overflow-hidden text-blue-800">
 
-  <!-- VIDEO de fondo -->
-  <video
-    :src="currentVideo"
-    autoplay
-    muted
-    loop
-    playsinline
-    @ended="nextVideo"
-    class="absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-1000"
-    :class="{ 'opacity-0': videoTransitioning, 'opacity-100': !videoTransitioning }"
-  ></video>
-
-  <!-- Overlay suave (opcional) -->
-  <div class="absolute inset-0 bg-white/60 z-10"></div>
-
-
-  <!-- CONTENIDO -->
-  <div class="relative z-20 flex flex-col items-center">
-    <img src="../assets/img/repartly_sin_fondo.png" alt="Logo repartly" class="mx-auto max-w-xs md:max-w-sm mb-6 animate-fade-in" />
-    <h1 class="text-3xl md:text-5xl font-extrabold animate-fade-in text-center">
-      Claridad financiera para repartidores
-    </h1>
-    <p class="max-w-xl text-lg text-gray-700 mt-4 mb-8 animate-fade-in-up text-center">
-      Controla entregas, gastos, ganancias y facturación desde un panel intuitivo y accesible desde cualquier dispositivo.
-    </p>
-    <div class="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up">
-      <RouterLink
-        to="/login"
-        class="bg-blue-700 text-white font-semibold px-6 py-3 rounded-xl shadow hover:scale-105 transition duration-300"
-      >
-        Iniciar sesión
-      </RouterLink>
-      <RouterLink
-        to="/register"
-        class="bg-black text-white font-semibold px-6 py-3 rounded-xl shadow hover:scale-105 transition duration-300"
-      >
-        Solicitar acceso
-      </RouterLink>
+    <!-- PRELOADER GLOBAL -->
+    <div v-if="loadingPage" class="fixed inset-0 z-[9999] flex items-center justify-center bg-white transition-opacity duration-700">
+      <div class="w-16 h-16 border-4 border-blue-700 border-t-transparent rounded-full animate-spin"></div>
     </div>
-  </div>
 
-</section>
+
+    <!-- HERO PRINCIPAL CON VIDEOS DE FONDO -->
+    <section class="min-h-screen relative flex flex-col items-center justify-center text-center px-4 overflow-hidden text-blue-800">
+
+      <!-- VIDEO de fondo -->
+      <video
+        :src="currentVideo"
+        autoplay
+        muted
+        loop
+        playsinline
+        @ended="nextVideo"
+        class="absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-1000"
+        :class="{ 'opacity-0': videoTransitioning, 'opacity-100': !videoTransitioning }"
+      ></video>
+
+      <!-- Overlay suave (opcional) -->
+      <div class="absolute inset-0 bg-white/60 z-10"></div>
+
+
+      <!-- CONTENIDO -->
+      <div class="relative z-20 flex flex-col items-center">
+        <img src="../assets/img/repartly_sin_fondo.png" alt="Logo repartly" class="mx-auto max-w-xs md:max-w-sm mb-6 animate-fade-in" />
+        <h1 class="text-3xl md:text-5xl font-extrabold animate-fade-in text-center">
+          Claridad financiera para repartidores
+        </h1>
+        <p class="max-w-xl text-lg text-gray-700 mt-4 mb-8 animate-fade-in-up text-center">
+          Controla entregas, gastos, ganancias y facturación desde un panel intuitivo y accesible desde cualquier dispositivo.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up">
+          <RouterLink
+            to="/login"
+            class="bg-blue-700 text-white font-semibold px-6 py-3 rounded-xl shadow hover:scale-105 transition duration-300"
+          >
+            Iniciar sesión
+          </RouterLink>
+          <RouterLink
+            to="/register"
+            class="bg-black text-white font-semibold px-6 py-3 rounded-xl shadow hover:scale-105 transition duration-300"
+          >
+            Solicitar acceso
+          </RouterLink>
+        </div>
+      </div>
+    </section>
 
 
     <!-- QUÉ HACE REPARTLY -->
@@ -255,6 +261,14 @@ onMounted(() => {
   })
 
   currentVideo.value = videos[Math.floor(Math.random() * videos.length)]
+
+  window.addEventListener('load', () => {
+    // Timeout opcional para hacer un fade-out más bonito
+    setTimeout(() => {
+      loadingPage.value = false
+    }, 300) // puedes ajustar el tiempo (ms)
+  })
+  
 })
 
 // SCRIPT VIDEOS LANDING
