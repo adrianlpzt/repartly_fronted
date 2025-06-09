@@ -55,7 +55,7 @@ watch(() => props.isOpen, (open) => {
 }, { immediate: true })
 
 const getAvatarPath = (avatar) =>
-  new URL(`../../assets/avatars/${avatar}`, import.meta.url).href
+  new URL(`@/assets/avatars/${avatar}`, import.meta.url).href
 
 async function guardarCambios() {
   try {
