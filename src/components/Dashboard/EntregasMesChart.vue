@@ -102,13 +102,11 @@ const chartOptions = computed(() => ({
 </script>
 
 <template>
-
-     <!-- Fallback mientras se carga -->
+  <div class="bg-white mt-6 p-4 rounded-xl border shadow space-y-4">
+    <!-- Fallback mientras se carga -->
     <div v-if="!isReady" class="text-center text-gray-400 mt-10">
       Cargando estadisticas...
     </div>
-
-  <div class="bg-white mt-6 p-4 rounded-xl border shadow space-y-4">
     <!-- Filtro por mes -->
     <div>
       <label class="block text-sm font-medium text-gray-700 mb-1">Filtrar por mes</label>
