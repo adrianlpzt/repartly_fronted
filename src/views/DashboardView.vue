@@ -73,6 +73,7 @@ const gastosMes = computed(() => {
 </script>
 
 <template>
+
   <div class="space-y-6">
     <!-- Encabezado -->
     <div class="flex justify-between items-center">
@@ -82,6 +83,12 @@ const gastosMes = computed(() => {
 
     <!-- Selector + Contenido -->
     <div class="bg-white p-6 rounded-2xl shadow border space-y-6">
+
+      <!-- Fallback mientras se carga -->
+    <div v-if="!isReady" class="text-center text-gray-400 mt-10">
+      Cargando perfil...
+    </div>
+
       <!-- Botones de vista -->
       <div class="flex gap-4">
         <button
