@@ -86,7 +86,7 @@ const gastosMes = computed(() => {
 
       <!-- Fallback mientras se carga -->
     <div v-if="!isReady" class="text-center text-gray-400 mt-10">
-      Cargando perfil...
+      Cargando estadisticas...
     </div>
 
       <!-- Botones de vista -->
