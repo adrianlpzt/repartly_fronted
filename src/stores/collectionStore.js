@@ -35,6 +35,7 @@ export const useCollectionStore = defineStore('collection', {
     async añadirRecogida(nuevaRecogida) {
       try {
         const token = localStorage.getItem('accessToken')
+        console.log('📦 Enviando recogida:', nuevaRecogida)
         await api.post('/recogidas/', nuevaRecogida, {
           headers: { Authorization: `Bearer ${token}` }
         })

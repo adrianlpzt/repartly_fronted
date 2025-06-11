@@ -38,6 +38,7 @@ export const useDeliveryStore = defineStore('delivery', {
     async añadirEntrega(entrega) {
       try {
         const token = localStorage.getItem('accessToken')
+        console.log('📦 Enviando entrega:', nuevaRecogida)
         await api.post('/entregas/', entrega, {
           headers: { Authorization: `Bearer ${token}` }
         })
