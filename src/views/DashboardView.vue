@@ -2,6 +2,8 @@
 import { computed, onMounted, nextTick, ref } from 'vue'
 import ToggleSidebarButton from '../components/common/ToggleSidebarButton.vue'
 import PlanStatusBanner from '../components/common/PlanStatusBanner.vue'
+import ApexCharts from 'vue3-apexcharts'
+import EntregasMesChart from '../components/Dashboard/EntregasMesChart.vue'
 import { useDeliveryStore } from '../stores/deliveryStore'
 import { useCollectionStore } from '../stores/collectionStore'
 import { useExpensesStore } from '../stores/expensesStore'
@@ -120,8 +122,13 @@ const gastosMes = computed(() => {
           :recogidas="recogidasMes"
           :gastos="gastosMes"
         />
-
-
+    </div>  
+    <div class="bg-white p-6 rounded-2xl shadow border space-y-6">
+      <EntregasMesChart
+        :entregas="entregasMes"
+        :recogidas="recogidasMes"
+        :gastos="gastosMes"
+      />
     </div>
   </div>
 </template>
