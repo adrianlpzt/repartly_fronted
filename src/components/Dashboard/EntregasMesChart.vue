@@ -67,7 +67,6 @@ const chartOptions = computed(() => ({
   dataLabels: { enabled: true },
   colors: ['#10b981', '#3b82f6'],
   title: {
-    text: 'Resumen mensual: Entregas y Recogidas',
     align: 'left',
     style: {
       fontSize: '16px',
