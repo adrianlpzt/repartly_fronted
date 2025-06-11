@@ -7,9 +7,6 @@ const props = defineProps({
   recogidas: { type: Array, required: true }
 })
 
-
-const isReady = ref(false)
-
 const mesSeleccionado = ref('')
 
 // Función para agrupar por mes
@@ -103,10 +100,6 @@ const chartOptions = computed(() => ({
 
 <template>
   <div class="bg-white mt-6 p-4 rounded-xl border shadow space-y-4">
-    <!-- Fallback mientras se carga -->
-    <div v-if="!isReady" class="text-center text-gray-400 mt-10">
-      Cargando estadisticas...
-    </div>
     <!-- Filtro por mes -->
     <div>
       <label class="block text-sm font-medium text-gray-700 mb-1">Filtrar por mes</label>
