@@ -32,7 +32,9 @@ export const useExpensesStore = defineStore('expenses', {
 
     async añadirGasto(gasto) {
       const token = localStorage.getItem('accessToken')
-      console.log('📦 Enviando gasto:', nuevaRecogida)
+      console.log('📦 Enviando gasto:', gasto)
+      gasto.total = parseFloat(gasto.total.toFixed(2))
+      console.log('📦 Enviando gasto corregido:', gasto)
       await api.post('/gastos/', gasto, {
         headers: { Authorization: `Bearer ${token}` }
       })
